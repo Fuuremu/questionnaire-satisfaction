@@ -6,8 +6,7 @@ public class Formateur {
 	private String nomFormateur;
 	private String prenomFormateur;
 	
-	public Formateur(int idFormateur, String NomFormateur, String PrenomFormateur) {
-		this.idFormateur = idFormateur;
+	public Formateur(String NomFormateur, String PrenomFormateur) {
 		this.nomFormateur = NomFormateur;
 		this.prenomFormateur = PrenomFormateur;
 	}
