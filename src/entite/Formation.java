@@ -46,6 +46,4 @@ public class Formation {
 	public void setTabApprenants(int[] tabApprenants) {
 		TabApprenants = tabApprenants;
 	}
-	
-	
 }

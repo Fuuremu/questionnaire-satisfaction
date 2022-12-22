@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entite.Apprenant;
+import entite.Formateur;
 
 public class Model {
 
@@ -42,7 +43,7 @@ public class Model {
         	e.printStackTrace();
         }
     }
-	    
+	//Apprenant***********************************************************************************************************************************************************   
 	public List<Apprenant> selectApprenant() {
         List <Apprenant> listeApprenants = new ArrayList<Apprenant>();
         try {    
@@ -88,5 +89,49 @@ public class Model {
 	   		 e.printStackTrace();
 	   	 }	
 	   }
+	
+	//Formateur*************************************************************************************************************************************************************
+	public List<Formateur> SelectFormateur() {
+        List <Formateur> listeFormateurs = new ArrayList<Formateur>();
+        try {    
+            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+            System.out.println("Connection à la base de données");
+            Statement selectStmt = this.cnx.createStatement();
+            String selectSQL = "SELECT * FROM Formateur";
+            ResultSet rs = selectStmt.executeQuery(selectSQL);
+            while (rs.next()) {
+                String nom = rs.getString("nomFormateur");
+                String prenom = rs.getString("prenomFormateur");
+                Formateur formateur = new Formateur(nom, prenom);
+                listeFormateurs.add(formateur);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeFormateurs;
+    }
+	
+	public void InsertFormateur(String Nom, String Prénom) {   
+		try {
+			this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+			Statement insertStmt = this.cnx.createStatement();
+			String insertSQL = "INSERT INTO Formateur VALUES ('"+Nom+"', '"+Prénom+"')";
+			insertStmt.execute(insertSQL);
+			insertStmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 	}
-
+	//Formation*************************************************************************************************************************************************************
+	public void InsertFormation(String themeFormation, int idFormateur, int[] tabApprenants) {   
+		try {
+			this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+			Statement insertStmt = this.cnx.createStatement();
+			String insertSQL = "INSERT INTO Formation VALUES ('"+themeFormation+"', '"+idFormateur+"', '"+tabApprenants+"')";
+			insertStmt.execute(insertSQL);
+			insertStmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+	}
+}

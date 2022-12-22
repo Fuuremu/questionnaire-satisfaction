@@ -7,7 +7,7 @@ public class Apprenant {
 	private String prenomApprenant;
 	private String emailApprenant; //adresse email
 	
-	public Apprenant(String nomApprenant,String prenomApprenant, String emailApprenant) {
+	public Apprenant(String nomApprenant, String prenomApprenant, String emailApprenant) {
 		super();
 		this.nomApprenant = nomApprenant;
 		this.prenomApprenant = prenomApprenant;
