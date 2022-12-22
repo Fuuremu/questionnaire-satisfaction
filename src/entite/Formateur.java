@@ -3,11 +3,13 @@ package entite;
 public class Formateur {
 
 	private int idFormateur;
-	private String NomFormateur;
+	private String nomFormateur;
+	private String prenomFormateur;
 	
-	public Formateur(int idFormateur, String NomFormateur) {
+	public Formateur(int idFormateur, String NomFormateur, String PrenomFormateur) {
 		this.idFormateur = idFormateur;
-		this.NomFormateur = NomFormateur;
+		this.nomFormateur = NomFormateur;
+		this.prenomFormateur = PrenomFormateur;
 	}
 
 	public int getIdFormateur() {
@@ -19,10 +21,22 @@ public class Formateur {
 	}
 
 	public String getNomFormateur() {
-		return NomFormateur;
+		return nomFormateur;
 	}
 
 	public void setNomFormateur(String nomFormateur) {
-		NomFormateur = nomFormateur;
+		this.nomFormateur = nomFormateur;
 	}
+
+	public String getPrenomFormateur() {
+		return prenomFormateur;
+	}
+
+	public void setPrenomFormateur(String prenomFormateur) {
+		this.prenomFormateur = prenomFormateur;
+	}
+
+
+
+	
 }

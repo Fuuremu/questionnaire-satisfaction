@@ -7,6 +7,7 @@ public class Note {
 	private int idApprenant;
 	private int idFormation;
 	private int Note[];
+	
 	public Note(int idNote, int idApprenant, int idFormation, int[] note) {
 		super();
 		this.idNote = idNote;

@@ -4,12 +4,13 @@ public class Apprenant {
 
 	private int idApprenant;
 	private String nomApprenant;
+	private String prenomApprenant;
 	private String emailApprenant; //adresse email
 	
-	public Apprenant(int idApprenant, String nomApprenant, String emailApprenant) {
+	public Apprenant(String nomApprenant,String prenomApprenant, String emailApprenant) {
 		super();
-		this.idApprenant = idApprenant;
 		this.nomApprenant = nomApprenant;
+		this.prenomApprenant = prenomApprenant;
 		this.emailApprenant = emailApprenant;
 	}
 
@@ -29,6 +30,14 @@ public class Apprenant {
 		this.nomApprenant = nomApprenant;
 	}
 
+	public String getPrenomApprenant() {
+		return prenomApprenant;
+	}
+
+	public void setPrenomApprenant(String prenomApprenant) {
+		this.prenomApprenant = prenomApprenant;
+	}
+
 	public String getEmailApprenant() {
 		return emailApprenant;
 	}
@@ -36,6 +45,6 @@ public class Apprenant {
 	public void setEmailApprenant(String emailApprenant) {
 		this.emailApprenant = emailApprenant;
 	}
-	
+
 	
 }
