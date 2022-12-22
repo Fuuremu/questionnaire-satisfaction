@@ -11,9 +11,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent rootFXML = FXMLLoader.load(getClass().getResource("Vue.fxml"));
+			Parent rootFXML = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
 			Scene sceneFXML = new Scene(rootFXML);
-			
+			primaryStage.setTitle("Questionnaire de satisfaction");
 			primaryStage.setScene(sceneFXML);
 			primaryStage.show();
 			
@@ -24,5 +24,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+		
+	
+		
 	}
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="397.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <Pane fx:id="paneAccueil" prefHeight="397.0" prefWidth="522.0" />
+      <MenuBar layoutY="1.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Ajouter">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterApprenant" text="Apprenant" />
+                  <MenuItem mnemonicParsing="false" text="Formateur" />
+                  <MenuItem mnemonicParsing="false" text="Formation" />
+                  <MenuItem mnemonicParsing="false" text="Avis" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Modifier">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Apprenant" />
+                  <MenuItem mnemonicParsing="false" text="Formateur" />
+                  <MenuItem mnemonicParsing="false" text="Formation" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Exporter">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Avis" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

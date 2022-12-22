@@ -1,9 +1,9 @@
 package application;
 
-import java.awt.Button;
-import java.awt.TextField;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import service.Model;
 
@@ -14,7 +14,7 @@ public class AjoutAprenantController {
 	private TextField Nom;
 	
 	@FXML 
-	private TextField Prénom;
+	private TextField Prenom;
 	
 	@FXML 
 	private TextField AdresseMail;
@@ -26,9 +26,9 @@ public class AjoutAprenantController {
 	public void ClicOnButtonAjoutApprenant (MouseEvent event) {
 		Model model = new Model();
 		String nomApprenant = Nom.getText();
-		String prenomApprenant = Prénom.getText();
+		String prenomApprenant = Prenom.getText();
 		String emailApprenant = AdresseMail.getText();
 		//INSERT
-		model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
+		//model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
 	}
 }
