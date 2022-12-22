@@ -11,6 +11,12 @@ public class Formateur {
 		this.prenomFormateur = PrenomFormateur;
 	}
 
+//	public Formateur (int idFormateur, String NomFormateur, String PrenomFormateur) {
+//		this.idFormateur = idFormateur;
+//		this.nomFormateur = NomFormateur;
+//		this.prenomFormateur = PrenomFormateur;
+//	}
+	
 	public int getIdFormateur() {
 		return idFormateur;
 	}

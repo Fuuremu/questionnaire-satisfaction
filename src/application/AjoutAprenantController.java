@@ -8,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 import service.Model;
 
 public class AjoutAprenantController {
-
 	
 	@FXML 
 	private TextField Nom;
@@ -29,6 +28,6 @@ public class AjoutAprenantController {
 		String prenomApprenant = Prenom.getText();
 		String emailApprenant = AdresseMail.getText();
 		//INSERT
-		//model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
+		model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
 	}
 }

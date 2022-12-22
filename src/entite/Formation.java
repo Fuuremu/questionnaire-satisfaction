@@ -5,14 +5,12 @@ public class Formation {
 	private int idFormation;
 	private String ThemeFormation;
 	private int idFormateur;
-	private int TabApprenants[];
 	
-	public Formation(int idFormation, String themeFormation, int idFormateur, int[] tabApprenants) {
+	public Formation(int idFormation, String themeFormation, int idFormateur) {
 		super();
 		this.idFormation = idFormation;
 		ThemeFormation = themeFormation;
 		this.idFormateur = idFormateur;
-		TabApprenants = tabApprenants;
 	}
 
 	public int getIdFormation() {
@@ -39,11 +37,4 @@ public class Formation {
 		this.idFormateur = idFormateur;
 	}
 
-	public int[] getTabApprenants() {
-		return TabApprenants;
-	}
-
-	public void setTabApprenants(int[] tabApprenants) {
-		TabApprenants = tabApprenants;
-	}
 }

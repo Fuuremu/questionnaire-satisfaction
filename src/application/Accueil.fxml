@@ -14,8 +14,8 @@
           <Menu mnemonicParsing="false" text="Ajouter">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterApprenant" text="Apprenant" />
-                  <MenuItem mnemonicParsing="false" text="Formateur" />
-                  <MenuItem mnemonicParsing="false" text="Formation" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormateur" text="Formateur" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormation" text="Formation" />
                   <MenuItem mnemonicParsing="false" text="Avis" />
             </items>
           </Menu>

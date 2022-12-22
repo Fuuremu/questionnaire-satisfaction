@@ -1,9 +1,9 @@
 package application;
 
-import java.awt.Button;
-import java.awt.TextField;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import service.Model;
 
