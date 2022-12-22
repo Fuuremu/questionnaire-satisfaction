@@ -28,8 +28,9 @@ public class Model {
             Statement st = this.cnx.createStatement();
             //Création des tables
 	        st.execute("create table Apprenant (idApprenant INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), nomApprenant varchar(20),prenomApprenant varchar(20), emailApprenant varchar(20))");
-	        st.execute("create table Formation (idFormation int, ThemeFormation varchar(20),idFormateur int, TabApprenants integer[])");
-	        st.execute("create table Formateur (idFormateur int, nomFormateur varchar(20), prenomFormateur varchar(20))");
+	        st.execute("create table Formation (idFormation INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), ThemeFormation varchar(20),idFormateur int, TabApprenants integer[])");
+	        st.execute("create table Formateur (idFormateur INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), nomFormateur varchar(20), prenomFormateur varchar(20))");
+	        st.execute("create table Note (idFormateur INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), idApprenant int, idFormation int, note integer[])");
 	        //Remplir les donées
 //	        st.executeUpdate("INSERT INTO Post VALUES (3, 'ilham','arbouch')");
 //	        st.executeUpdate("INSERT INTO Post VALUES (60, 'TOMA','TOMAi')");
