@@ -2,44 +2,38 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import entite.Apprenant;
-import entite.Formateur;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 import javafx.util.*;
 import service.Model;
 
 public class AjoutFormationController implements Initializable {
      
+	@FXML
+	private Pane paneAjoutFormation;
+	
     @FXML
     private Button AjoutFormation;
     
     @FXML
-    private Button Thème;
+    private TextField Thème;
 	
 	@FXML
     private ChoiceBox<String> idSaisieFormateur;
@@ -133,4 +127,9 @@ public class AjoutFormationController implements Initializable {
 		//INSERT Formation
 		model.InsertFormation(Thème.getText(), idFormateur);
 	}
+	public void onClickButtonReturn() throws IOException {
+        Parent rootFXML = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+        Scene scene = this.AjoutFormation.getScene();    
+        scene.setRoot(rootFXML);       
+}
 }

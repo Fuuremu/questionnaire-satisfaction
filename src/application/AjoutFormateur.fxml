@@ -8,13 +8,14 @@
 
 <AnchorPane prefHeight="289.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjoutFormateurController">
    <children>
-      <Pane layoutY="7.0" prefHeight="276.0" prefWidth="431.0">
+      <Pane fx:id="AjoutFormateur" layoutY="7.0" prefHeight="276.0" prefWidth="431.0">
          <children>
             <TextField fx:id="Nom" layoutX="200.0" layoutY="66.0" prefHeight="31.0" prefWidth="196.0" />
             <Label layoutX="36.0" layoutY="68.0" prefHeight="31.0" prefWidth="119.0" text="Nom du formateur :" />
             <TextField fx:id="Prénom" layoutX="200.0" layoutY="137.0" prefHeight="31.0" prefWidth="196.0" />
             <Label layoutX="36.0" layoutY="135.0" prefHeight="31.0" prefWidth="135.0" text="Prénom du formateur :" />
             <Button fx:id="AjouterFormateur" layoutX="144.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonAjoutFormateur" text="Ajouter formateur" />
+            <Button layoutX="29.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" text="Revenir" />
          </children>
       </Pane>
    </children>
