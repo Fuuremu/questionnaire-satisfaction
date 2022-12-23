@@ -1,42 +1,52 @@
 package application;
 
-
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import entite.Apprenant;
 import entite.Formateur;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableCell;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
+import javafx.stage.Stage;
+import javafx.util.*;
 import service.Model;
 
 public class AjoutFormationController implements Initializable {
-	
-	@FXML 
-	private TextField Thème;
-	
-	@FXML 
-	public ChoiceBox<String> ComboFormateur;
-	
-	@FXML 
-	private Button AjoutFormation;
+     
+    @FXML
+    private Button AjoutFormation;
+    
+    @FXML
+    private Button Thème;
 	
 	@FXML
-	private TableView<Apprenant> tableView;
-	
+    private ChoiceBox<String> idSaisieFormateur;
+    
+    @FXML
+    private TableView<Apprenant> tbData;
+    
     @FXML
     public TableColumn<Apprenant, String> nomColId;
     
@@ -44,69 +54,83 @@ public class AjoutFormationController implements Initializable {
     public TableColumn<Apprenant, String> prenomColId;
     
     @FXML
-    public TableColumn<Apprenant, String> colEdit;
-	        
-    @Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-    	initCombo();
-    	System.out.println(ComboFormateur.getItems());
-    	initTableau();
-	}
+    public TableColumn<Apprenant, String> colEdit; 
    
-	public void initCombo() {
-		Model model = new Model();
-		this.ComboFormateur = new ChoiceBox<String>();
-		ObservableList<Formateur> liste= model.SelectFormateur();	
-    	Formateur Formateur;
-    	ObservableList<String> FormateurList = FXCollections.observableArrayList();
-        for(int i=0; i < liste.size(); i++) {
-        	Formateur = liste.get(i);
-        	FormateurList.add(Formateur.getNomFormateur());
-//        	System.out.println(FormateurList);
-        }      
-    	this.ComboFormateur.setItems(FormateurList);
-    }
-	
-	public void initTableau() {
-//		Model model = new Model();
-//		this.ComboFormateur = new ChoiceBox<String>();
-//		ObservableList<Apprenant> listApprenant = model.selectApprenant();
-//		nomColId.setCellValueFactory(new PropertyValueFactory<>("Nom"));
-//		prenomColId.setCellValueFactory(new PropertyValueFactory<>("Prénom"));
-//		tableView.setItems(listApprenant);
-//		
-//		Callback<TableColumn<Apprenant, String>, TableCell<Apprenant, String>> cellFactory=(param) -> {
-//			final TableCell<Apprenant, String> cell = new TableCell<Apprenant, String>() {
-//        		@Override
-//        		public void updateItem(String item, boolean empty) {
-//        			super.updateItem(item, empty);
-//        			if(empty) {
-//        				setGraphic(null);
-//        				setText(null);
-//        			}
-//        			else {
-//        				final CheckBox CheckB = new CheckBox();
-//        				CheckB.setOnAction(event -> {
-//        					
-//        					Apprenant animal = tableView.getItems().get(getIndex());
-//        					System.out.println(animal);
-//							
-//            			});
-//            			
-//            			setGraphic(CheckB);
-//            			setText(null);
-//        			}
-//        		};
-//        	};
-//			return cell;
-//        };
-//        colEdit.setCellFactory(cellFactory);
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+	    initCombo();
+	    initTableau(); 
 	};
 	
-	
-	public void ClicOnButtonAjoutFormation (MouseEvent event) {
+    public void initTableau() {
 		Model model = new Model();
-		String themeFormation = Thème.getText();
+		ObservableList<Apprenant> listApprenant = FXCollections.observableArrayList(model.selectApprenant());
+//		System.out.println(model.selectApprenant());
+    	nomColId.setCellValueFactory(new PropertyValueFactory<>("nomApprenant"));
+	    prenomColId.setCellValueFactory(new PropertyValueFactory<>("prenomApprenant"));
+	    tbData.setItems(listApprenant);
+        Callback<TableColumn<Apprenant, String>, TableCell<Apprenant, String>> cellFactory=(param) -> {
+        	final TableCell<Apprenant, String> cell = new TableCell<Apprenant, String>() {
+        		@Override
+        		public void updateItem(String item, boolean empty) {
+        			super.updateItem(item, empty);
+        			if(empty) {
+        				setGraphic(null);
+        				setText(null);
+        			}
+        			else {
+        				final CheckBox editCheck = new CheckBox();
+        				editCheck.setOnAction(event -> {	
+        					//Il faux tester si la valeur est vrai ou pas ************************************************************************?
+        					//Si vrai on enregistre **********************************************************************************************
+        					Apprenant apprenant = tbData.getItems().get(getIndex());
+//        					System.out.println(apprenant);
+//        					System.out.println(idSaisieFormateur.getSelectionModel().getSelectedItem());
+        					final String SEPARATEUR = " ";
+    				        String Chaine = idSaisieFormateur.getSelectionModel().getSelectedItem();
+    				        String mots[] = Chaine.split(SEPARATEUR);
+    				        int idFormateur = 0;
+    				        for (int i = 0; i < mots.length; i++) {
+//    				            System.out.println(mots[0]+"*********"+ mots[1]);
+    				            idFormateur = model.SelectIdFormateur(mots[0], mots[1]);
+    				        }
+							//INSERT Formation Apprenant
+    				        int idApprenant = apprenant.getIdApprenant();
+        					model.InsertFormationApprenant(idApprenant, idFormateur);
+//        					System.out.println(idFormateur+idApprenant+"INSERT DONE");
+        					
+        					//Sinon on Delete*****************************************************************************************************?
+
+        					
+            			});
+            			setGraphic(editCheck);
+            			setText(null);
+        			}
+        		};
+        	};
+        	return cell;
+        };
+        colEdit.setCellFactory(cellFactory);
+        //*----------------------------------------------------------------------------------------------------------------------------------------------------
+    }
+	public void initCombo() {
+		Model model = new Model();
+		ObservableList<String> listeFormateur= FXCollections.observableList(model.SelectNamesFormateur());	
+//      System.out.println(liste);
+	    idSaisieFormateur.setItems(listeFormateur);
+//		System.out.println(idSaisieFormateur.getItems());
+	}	
+	
+	public void ClicOnButtonAjoutFormation () {
+		Model model = new Model();
+        String Chaine = idSaisieFormateur.getSelectionModel().getSelectedItem();
+        String mots[] = Chaine.split(" ");
+		int idFormateur = 0;
+        for (int i = 0; i < mots.length; i++) {
+            idFormateur = model.SelectIdFormateur(mots[0], mots[1]);
+        }
+		//INSERT Formation
+		model.InsertFormation(Thème.getText(), idFormateur);
 	}
 }
-

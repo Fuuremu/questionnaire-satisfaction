@@ -13,7 +13,7 @@ public class AjoutAprenantController {
 	private TextField Nom;
 	
 	@FXML 
-	private TextField Prenom;
+	private TextField sPrenom;
 	
 	@FXML 
 	private TextField AdresseMail;
@@ -25,8 +25,11 @@ public class AjoutAprenantController {
 	public void ClicOnButtonAjoutApprenant (MouseEvent event) {
 		Model model = new Model();
 		String nomApprenant = Nom.getText();
-		String prenomApprenant = Prenom.getText();
+//		System.out.println(nomApprenant);
+		String prenomApprenant = sPrenom.getText();
+//		System.out.println(prenomApprenant);
 		String emailApprenant = AdresseMail.getText();
+//		System.out.println(emailApprenant);
 		//INSERT
 		model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
 	}

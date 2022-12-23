@@ -6,9 +6,8 @@ public class Formation {
 	private String ThemeFormation;
 	private int idFormateur;
 	
-	public Formation(int idFormation, String themeFormation, int idFormateur) {
+	public Formation(String themeFormation, int idFormateur) {
 		super();
-		this.idFormation = idFormation;
 		ThemeFormation = themeFormation;
 		this.idFormateur = idFormateur;
 	}

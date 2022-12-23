@@ -13,6 +13,9 @@ public class Apprenant {
 		this.prenomApprenant = prenomApprenant;
 		this.emailApprenant = emailApprenant;
 	}
+	public Apprenant(String nomApprenant, String prenomApprenant) {  
+        this(nomApprenant,prenomApprenant, "indéfini") ;  // appel du constructeur de même classe  
+   }  
 
 	public int getIdApprenant() {
 		return idApprenant;

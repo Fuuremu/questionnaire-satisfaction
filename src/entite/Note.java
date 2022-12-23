@@ -11,9 +11,8 @@ public class Note {
 	private int Note3;
 	private int Note4;
 	
-	public Note(int idNote, int idApprenant, int idFormation, int note1, int note2, int note3, int note4) {
+	public Note(int idApprenant, int idFormation, int note1, int note2, int note3, int note4) {
 		super();
-		this.idNote = idNote;
 		this.idApprenant = idApprenant;
 		this.idFormation = idFormation;
 		this.Note1 = note1;

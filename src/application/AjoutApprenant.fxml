@@ -12,7 +12,7 @@
          <children>
             <TextField fx:id="Nom" layoutX="200.0" layoutY="66.0" prefHeight="31.0" prefWidth="196.0" />
             <Label layoutX="36.0" layoutY="68.0" prefHeight="31.0" prefWidth="119.0" text="Nom de l'apprenant :" />
-            <TextField fx:id="Prénom" layoutX="200.0" layoutY="137.0" prefHeight="31.0" prefWidth="196.0" />
+            <TextField fx:id="sPrenom" layoutX="200.0" layoutY="137.0" prefHeight="31.0" prefWidth="196.0" />
             <Label layoutX="36.0" layoutY="135.0" prefHeight="31.0" prefWidth="135.0" text="Prénom de l'apprenant :" />
             <Label layoutX="36.0" layoutY="205.0" prefHeight="31.0" prefWidth="135.0" text="Adresse Mail :" />
             <TextField fx:id="AdresseMail" layoutX="200.0" layoutY="205.0" prefHeight="31.0" prefWidth="196.0" />
