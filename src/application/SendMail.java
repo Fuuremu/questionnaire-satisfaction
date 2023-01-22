@@ -27,7 +27,7 @@ public class SendMail {
         // Mot de passe de l'expéditeur
         String password = "@6D1/wOd8v42";
         // Adresse email du destinataire
-        String to = "ilhamarbouch1@gmail.com";
+        String to = "arbouch1@gmail.com";
         // Sujet du message
         String subject = "LE SUJET";
         // Corps du message
@@ -47,7 +47,7 @@ public class SendMail {
         props.put("mail.smtp.port", "587");
         // Nom d'utilisateur (adresse email)
         props.put("mail.smtp.auth", "true");
-
+        
         // Création d'une session avec les propriétés de l'environnement
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {

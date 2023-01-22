@@ -16,7 +16,8 @@
               <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterApprenant" text="Apprenant" />
                   <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormateur" text="Formateur" />
                   <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormation" text="Formation" />
-                  <MenuItem mnemonicParsing="false" text="Avis" />
+                  <MenuItem mnemonicParsing="false" text="Envoyer les Formulaires" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickFenetreTest" text="test" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Modifier">
@@ -28,7 +29,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Exporter">
             <items>
-              <MenuItem mnemonicParsing="false" text="Avis" />
+              <MenuItem mnemonicParsing="false" text="Exporter Avis" />
             </items>
           </Menu>
         </menus>
