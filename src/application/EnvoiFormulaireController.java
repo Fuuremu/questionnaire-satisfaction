@@ -35,19 +35,6 @@ public class EnvoiFormulaireController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		 initCombo();
-//		 send("arbouchilham1@gmail.com", "Ilhamattiarbouch1234?", "arbouchilham1@gmail.com", "LE SUJET", "C'est un test");
-//		  // Adresse email de l'expéditeur
-//	        String from = "arbouchilham1@gmail.com";
-//	        // Mot de passe de l'expéditeur
-//	        String password = "Ilhamattiarbouch1234?";
-//	        // Adresse email du destinataire
-//	        String to = "arbouchilham1@gmail.com";
-//	        // Sujet du message
-//	        String subject = "LE SUJET";
-//	        // Corps du message
-//	        String body = "LE CORPS";
-//
-//	        send(from, password, to, subject, body);
 	};
 	
 	public void initCombo() {
@@ -61,6 +48,21 @@ public class EnvoiFormulaireController implements Initializable {
         Scene scene = this.SendMail.getScene();    
         scene.setRoot(rootFXML);       
 	}
+	public void onClickButtonSendMail() throws IOException {
+//		 send("ilham@cafr5769.odns.fr", "n43RS9XmY6jkpBZ", "arbouchilham1@gmail.com", "LE SUJET", "C'est un test");
+//		  // Adresse email de l'expéditeur
+//	        String from = "arbouchilham1@gmail.com";
+//	        // Mot de passe de l'expéditeur
+//	        String password = "Ilhamattiarbouch1234?";
+//	        // Adresse email du destinataire
+//	        String to = "arbouchilham1@gmail.com";
+//	        // Sujet du message
+//	        String subject = "LE SUJET";
+//	        // Corps du message
+//	        String body = "LE CORPS";
+//
+//	        send(from, password, to, subject, body);
+	}
 
 //    public static void send(String from, String password, String to, String subject, String body) {
 //        // Récupération des propriétés de l'environnement
@@ -70,7 +72,7 @@ public class EnvoiFormulaireController implements Initializable {
 //        // Activation de la communication sécurisée (TLS)
 //        props.put("mail.smtp.starttls.enable", "true");
 //        // Port SMTP
-//        props.put("mail.smtp.port", "465");
+//        props.put("mail.smtp.port", "587");
 //        // Nom d'utilisateur (adresse email)
 //        props.put("mail.smtp.auth", "true");
 //        

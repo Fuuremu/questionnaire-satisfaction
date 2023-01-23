@@ -58,5 +58,10 @@ public class Controller implements Initializable{
         Scene scene = this.paneAccueil.getScene();    
         scene.setRoot(rootFXML);       
 	}
+	public void onClickFenetreExportCsv() throws IOException {
+        Parent rootFXML = FXMLLoader.load(getClass().getResource("ExportCSV.fxml"));
+        Scene scene = this.paneAccueil.getScene();    
+        scene.setRoot(rootFXML);       
+	}
 	
 }

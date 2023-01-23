@@ -39,7 +39,7 @@ public class Model {
 //	        st.execute("create table Formation (idFormation INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 )"+"PRIMARY KEY, ThemeFormation varchar(20),idFormateur int)");
 //	        st.execute("create table FormationApprenant (idFormation int, idApprenant int)");
 //	        st.execute("create table Formateur (idFormateur INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 )"+"PRIMARY KEY, nomFormateur varchar(20), prenomFormateur varchar(20))");
-//	        st.execute("create table Note (idNote INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 )"+"PRIMARY KEY, idApprenant int, idFormation int, note1 integer, note2 integer, note3 integer,note4 integer)");
+//	        st.execute("create table Note (idNote INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 )"+"PRIMARY KEY, idApprenant int, idFormation int, note1 int, note2 int, note3 int,note4 int)");
 	        //Remplir les donées
 //	        st.executeUpdate("INSERT INTO Post VALUES (3, 'ilham','arbouch')");
 //	        st.executeUpdate("INSERT INTO Formation VALUES (202 ,'MISE EN PRODUCTION',1)");
@@ -76,6 +76,24 @@ public class Model {
         }
         return listeApprenants;
     }
+	public ObservableList<String> SelectNamesApprentie() {
+		ObservableList<String> listeNomsApprentie = FXCollections.observableArrayList();
+		 try {    
+	            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+	            System.out.println("Connection à la base de données");
+	            Statement selectStmt = this.cnx.createStatement();
+	            String selectSQL = "SELECT * FROM Apprenant";
+	            ResultSet rs = selectStmt.executeQuery(selectSQL);
+	            while (rs.next()) {
+	                String nom = rs.getString("nomApprenant");
+	                String prenom = rs.getString("prenomApprenant");
+	                listeNomsApprentie.add(nom+" "+prenom);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	     return listeNomsApprentie; 
+	}
 	//Pour récupérer l'id à partir du nom et prénom du formateur
 	public int SelectIdApprenant (String Nom) {
 		int id = 0;
@@ -256,7 +274,25 @@ public class Model {
 	        }
 	     return listeNomsFormations; 
 	}
-	
+	//Pour récupérer l'id à partir du libellé de la formation
+		public int SelectIdFormation (String lib) {
+			int id = 0;
+	        try {    
+	            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+	            System.out.println("Connection à la base de données");
+	            Statement selectStmt = this.cnx.createStatement();
+	            String selectSQL = "SELECT idFormation FROM Formation WHERE themeFormation='"+lib+"'";
+	            ResultSet rs = selectStmt.executeQuery(selectSQL);
+	            while (rs.next()) {
+	            	id = rs.getInt("idFormation");
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        System.out.println(id);
+			return id;
+		}
+		
 	public void InsertFormation(String themeFormation, int idFormateur) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
@@ -292,7 +328,7 @@ public class Model {
 	}
 	//	Note*********************************************************************************************************************************************************
 	public ObservableList<Note> selectNote() {
-		ObservableList <Note> listeNotes = FXCollections.observableArrayList();
+		ObservableList<Note> listeNotes = FXCollections.observableArrayList();
         try {    
             this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
             System.out.println("Connection à la base de données");
@@ -300,18 +336,39 @@ public class Model {
             String selectSQL = "SELECT * FROM Note";
             ResultSet rs = selectStmt.executeQuery(selectSQL);
             while (rs.next()) { 
-                int idApprenant = rs.getInt("idApprenant");
-                int idFormation = rs.getInt("idFormation");
-                int note1 = rs.getInt("note1");
-                int note2 = rs.getInt("note2");
-                int note3 = rs.getInt("note3");
-                int note4 = rs.getInt("note4");
-                Note Note = new Note(idApprenant, idFormation, note1, note2, note3, note4);
-                listeNotes.add(Note);
+                int vidApprenant = rs.getInt("idApprenant");
+                int vidFormation = rs.getInt("idFormation");
+                int vnote1 = rs.getInt("note1");
+                int vnote2 = rs.getInt("note2");
+                int vnote3 = rs.getInt("note3");
+                int vnote4 = rs.getInt("note4");
+                Note note = new Note(vidApprenant, vidFormation, vnote1, vnote2, vnote3, vnote4);
+                System.out.println(vidApprenant+"--"+ vidFormation+"--"+vnote1+"--"+vnote2+"--"+vnote3+"--"+vnote4);
+                listeNotes.add(note);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return listeNotes;
     }
+//	idNote idApprenant idFormation note1 note2 note3 note4)
+	public void InsertNote(int idApprenant, int idFormation, int note1, int note2, int note3, int note4) {   
+		 try {
+             this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+             System.out.println("Connection à la base de données");
+	   		 String insertSQL = "INSERT INTO Note(idApprenant, idFormation, note1, note2, note3, note4) VALUES (?, ?, ?, ?, ?, ?)";
+	   		 PreparedStatement insertStmt = this.cnx.prepareStatement(insertSQL);
+	   		 Statement selectStmt = this.cnx.createStatement();
+		     insertStmt.setInt(1, idApprenant);
+		     insertStmt.setInt(2, idFormation);
+		     insertStmt.setInt(3, note1);
+		     insertStmt.setInt(4, note2);
+		     insertStmt.setInt(5, note3);
+		     insertStmt.setInt(6, note4);
+		     insertStmt.executeUpdate();	 
+   		 	 insertStmt.close();
+   	 } catch (SQLException e) {
+   		 e.printStackTrace();
+   	 }
+	}
 }

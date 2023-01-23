@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefHeight="456.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FormulaireController">
    <children>
-      <Pane layoutY="-7.0" prefHeight="456.0" prefWidth="565.0">
+      <Pane prefHeight="456.0" prefWidth="565.0">
          <children>
-            <Label layoutX="30.0" layoutY="56.0" prefHeight="17.0" prefWidth="522.0" text="Les objectifs pédagogiques visés et indiqués sur le programme de formation ont-ils été atteints ?" />
-            <Label layoutX="30.0" layoutY="135.0" prefHeight="17.0" prefWidth="406.0" text="Cette formation vous a-t-elle permis d'acquérir de nouvelle compétences ?" />
-            <Label layoutX="30.0" layoutY="217.0" prefHeight="17.0" prefWidth="406.0" text="Recommanderiez vous cet organisme de formation ?" />
-            <Label layoutX="30.0" layoutY="300.0" prefHeight="17.0" prefWidth="395.0" text="La durée de cette formation est-elle suffisante ?" />
-            <Button fx:id="Valider" layoutX="247.0" layoutY="405.0" mnemonicParsing="false" text="Valider" />
+            <Label layoutX="30.0" layoutY="77.0" prefHeight="17.0" prefWidth="522.0" text="Les objectifs pédagogiques visés et indiqués sur le programme de formation ont-ils été atteints ?" />
+            <Label layoutX="30.0" layoutY="152.0" prefHeight="17.0" prefWidth="406.0" text="Cette formation vous a-t-elle permis d'acquérir de nouvelle compétences ?" />
+            <Label layoutX="30.0" layoutY="235.0" prefHeight="17.0" prefWidth="406.0" text="Recommanderiez vous cet organisme de formation ?" />
+            <Label layoutX="30.0" layoutY="318.0" prefHeight="17.0" prefWidth="395.0" text="La durée de cette formation est-elle suffisante ?" />
+            <Button fx:id="Valider" layoutX="264.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonValiderNotation" text="Valider" />
+            <TextField fx:id="Note1" layoutX="247.0" layoutY="109.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField fx:id="Note2" layoutX="247.0" layoutY="189.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField fx:id="Note3" layoutX="247.0" layoutY="271.0" prefHeight="25.0" prefWidth="71.0" />
+            <TextField fx:id="Note4" layoutX="247.0" layoutY="352.0" prefHeight="25.0" prefWidth="71.0" />
+            <ChoiceBox fx:id="idSaisieApprentie" layoutX="105.0" layoutY="26.0" prefHeight="26.0" prefWidth="161.0" />
+            <Label layoutX="30.0" layoutY="31.0" prefHeight="17.0" prefWidth="105.0" text="Apprentie :" />
+            <ChoiceBox fx:id="idChoixFormation" layoutX="392.0" layoutY="26.0" prefHeight="26.0" prefWidth="161.0" />
+            <Label layoutX="313.0" layoutY="30.0" prefHeight="18.0" prefWidth="71.0" text="Formation :" />
+            <Button layoutX="38.0" layoutY="403.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" text="Revenir" />
          </children>
       </Pane>
    </children>

@@ -13,7 +13,7 @@
             <Button layoutX="93.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" text="Revenir" />
             <Label layoutX="79.0" layoutY="56.0" prefHeight="18.0" prefWidth="150.0" text="Formation :" />
             <ChoiceBox fx:id="idChoixFormation" layoutX="264.0" layoutY="52.0" prefHeight="26.0" prefWidth="198.0" />
-            <Button fx:id="SendMail" layoutX="287.0" layoutY="307.0" mnemonicParsing="false" text="Send Mail" />
+            <Button fx:id="SendMail" layoutX="287.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onClickButtonSendMail" text="Send Mail" />
          </children></Pane>
    </children>
 </AnchorPane>

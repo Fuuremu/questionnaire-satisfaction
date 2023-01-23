@@ -17,19 +17,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormateur" text="Formateur" />
                   <MenuItem mnemonicParsing="false" onAction="#onClickFenetreAjouterFormation" text="Formation" />
                   <MenuItem mnemonicParsing="false" onAction="#onClickFenetreEnvoiFormulaire" text="Envoyer les Formulaires" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClickFenetreTest" text="test" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Modifier">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Apprenant" />
-                  <MenuItem mnemonicParsing="false" text="Formateur" />
-                  <MenuItem mnemonicParsing="false" text="Formation" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickFenetreTest" text="Saisir les avis d'un apprenant" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Exporter">
             <items>
-              <MenuItem mnemonicParsing="false" text="Exporter Avis" />
+              <MenuItem mnemonicParsing="false" onAction="#onClickFenetreExportCsv" text="Exporter Avis" />
             </items>
           </Menu>
         </menus>
