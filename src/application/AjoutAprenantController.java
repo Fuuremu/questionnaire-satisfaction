@@ -33,14 +33,17 @@ public class AjoutAprenantController {
 	
 	public void ClicOnButtonAjoutApprenant (MouseEvent event) {
 		Model model = new Model();
+		
 		String nomApprenant = Nom.getText();
-//		System.out.println(nomApprenant);
 		String prenomApprenant = sPrenom.getText();
-//		System.out.println(prenomApprenant);
 		String emailApprenant = AdresseMail.getText();
-//		System.out.println(emailApprenant);
 		//INSERT
-		model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
+		if (Nom.getText() != "" && sPrenom.getText() != "" && AdresseMail.getText() != "") {
+			model.InsertApprenant(nomApprenant, prenomApprenant, emailApprenant);
+			Nom.setText("");
+			sPrenom.setText("");
+			AdresseMail.setText("");
+		}
 	}
 	
 	public void onClickButtonReturn() throws IOException {

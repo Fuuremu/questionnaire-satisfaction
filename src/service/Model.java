@@ -42,7 +42,7 @@ public class Model {
 //	        st.execute("create table Note (idNote INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1 )"+"PRIMARY KEY, idApprenant int, idFormation int, note1 integer, note2 integer, note3 integer,note4 integer)");
 	        //Remplir les donées
 //	        st.executeUpdate("INSERT INTO Post VALUES (3, 'ilham','arbouch')");
-//	        st.executeUpdate("INSERT INTO Post VALUES (60, 'TOMA','TOMAi')");
+//	        st.executeUpdate("INSERT INTO Formation VALUES (202 ,'MISE EN PRODUCTION',1)");
 	            
             st.close();
         } catch (ClassNotFoundException e) {
@@ -61,6 +61,7 @@ public class Model {
             String selectSQL = "SELECT * FROM Apprenant";
             ResultSet rs = selectStmt.executeQuery(selectSQL);
             while (rs.next()) {
+            	System.out.println(rs.getString("idApprenant"));
                 String nom = rs.getString("nomApprenant");
                 System.out.println(nom);
                 String prenom = rs.getString("prenomApprenant");
@@ -75,18 +76,24 @@ public class Model {
         }
         return listeApprenants;
     }
-//A SUPPRIMER	    
-//    public void InsertApprenant(String Nom, String Prénom, String AdresseMail) {   
-//    	 try {
-//             this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
-//    		 Statement insertStmt = this.cnx.createStatement();
-//    		 String insertSQL = "INSERT INTO Apprenant VALUES ('"+Nom+"', '"+Prénom+"', '"+AdresseMail+"')";
-//    		 insertStmt.execute(insertSQL);
-//    		 insertStmt.close();
-//    	 } catch (SQLException e) {
-//    		 e.printStackTrace();
-//    	 }		
-//    }
+	//Pour récupérer l'id à partir du nom et prénom du formateur
+	public int SelectIdApprenant (String Nom) {
+		int id = 0;
+        try {    
+            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+            System.out.println("Connection à la base de données");
+            Statement selectStmt = this.cnx.createStatement();
+            String selectSQL = "SELECT idApprenant FROM Apprenant WHERE nomApprenant='"+Nom+"'";
+            ResultSet rs = selectStmt.executeQuery(selectSQL);
+            while (rs.next()) {
+            	id = rs.getInt("idApprenant");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(id);
+		return id;
+	}
 	public void InsertApprenant(String Nom, String Prénom, String AdresseMail) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
@@ -94,14 +101,13 @@ public class Model {
 			 String insertSQL = "INSERT INTO Apprenant (nomApprenant, prenomApprenant, emailApprenant) VALUES (?, ?, ?)";
 		     PreparedStatement insertStmt = this.cnx.prepareStatement(insertSQL);
 		     System.out.println("INSERT DONE" + Nom + Prénom+ AdresseMail);
-		     String selectSQL = "SELECT MAX(idApprenant) FROM Apprenant";
+//		     String selectSQL = "SELECT MAX(idApprenant) FROM Apprenant";
 		     Statement selectStmt = this.cnx.createStatement();
-		     ResultSet rs = selectStmt.executeQuery(selectSQL);
-		     int lastId = 0;
-		     if (rs.next()) {
-		       lastId = rs.getInt(1);
-		     }
-		
+//		     ResultSet rs = selectStmt.executeQuery(selectSQL);
+//		     int lastId = 0;
+//		     if (rs.next()) {
+//		       lastId = rs.getInt(1);
+//		     }
 		     insertStmt.setString(1, Nom);
 		     insertStmt.setString(2, Prénom);
 		     insertStmt.setString(3, AdresseMail);
@@ -139,7 +145,7 @@ public class Model {
                 String nom = rs.getString("nomFormateur");
                 String prenom = rs.getString("prenomFormateur");
                 Formateur formateur = new Formateur(nom, prenom);
-//                System.out.println(nom+" "+prenom);
+//                System.out.println(rs.getInt("idFormateur")+nom+" "+prenom);
                 listeFormateurs.add(formateur);
             }
         } catch (SQLException e) {
@@ -177,7 +183,7 @@ public class Model {
 	            while (rs.next()) {
 	                String nom = rs.getString("nomFormateur");
 	                String prenom = rs.getString("prenomFormateur");
-//	                System.out.println(nom+" "+prenom);
+//	                System.out.println(rs.getInt("idFormateur")+nom+" "+prenom);
 	                listeNomsFormateurs.add(nom+" "+prenom);
 	            }
 	        } catch (SQLException e) {
@@ -193,15 +199,14 @@ public class Model {
 			 String insertSQL = "INSERT INTO Formateur (NomFormateur, PrenomFormateur) VALUES (?, ?)";
 		     PreparedStatement insertStmt = this.cnx.prepareStatement(insertSQL);
 		     System.out.println("INSERT DONE");
-		     String selectSQL = "SELECT MAX(idFormateur) FROM Formateur";
+//		     String selectSQL = "SELECT MAX(idFormateur) FROM Formateur";
 		     Statement selectStmt = this.cnx.createStatement();
-		     ResultSet rs = selectStmt.executeQuery(selectSQL);
-		     int lastId = 0;
-		     if (rs.next()) {
-		       lastId = rs.getInt(1);
-		     }
-		
-//		     insertStmt.setInt(1, lastId+1);
+//		     ResultSet rs = selectStmt.executeQuery(selectSQL);
+//		     int lastId = 0;
+//		     if (rs.next()) {
+//		       lastId = rs.getInt(1);
+//		     }
+		     
 		     insertStmt.setString(1, Nom);
 		     insertStmt.setString(2, Prénom);
 //		     System.out.println(Nom+" " +Prénom);
@@ -224,6 +229,7 @@ public class Model {
             while (rs.next()) { 
                 String ThemeFormation = rs.getString("themeFormation");
                 int idFormateur = rs.getInt("idFormateur");
+                System.out.println(ThemeFormation+ idFormateur);
                 Formation formation = new Formation(ThemeFormation, idFormateur);
                 listeFormations.add(formation);
             }
@@ -232,22 +238,36 @@ public class Model {
         }
         return listeFormations;
     }
-
-	public void InsertFormation(String themeFormation, int idFormation) {   
+	public ObservableList<String> SelectNamesFormation() {
+		ObservableList<String> listeNomsFormations = FXCollections.observableArrayList();
+		 try {    
+	            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+	            System.out.println("Connection à la base de données");
+	            Statement selectStmt = this.cnx.createStatement();
+	            String selectSQL = "SELECT * FROM Formation";
+	            ResultSet rs = selectStmt.executeQuery(selectSQL);
+	            while (rs.next()) {
+	            	String ThemeFormation = rs.getString("themeFormation");
+	                System.out.println(ThemeFormation);
+	            	listeNomsFormations.add(ThemeFormation);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	     return listeNomsFormations; 
+	}
+	
+	public void InsertFormation(String themeFormation, int idFormateur) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
-			 String insertSQL = "INSERT INTO Formation (themeFormation, idFormation) VALUES (?, ?)";
+			 String insertSQL = "INSERT INTO Formation (themeFormation, idFormateur) VALUES (?, ?)";
 		     PreparedStatement insertStmt = this.cnx.prepareStatement(insertSQL);
 		     System.out.println("INSERT FORMATION DONE");
-		     String selectSQL = "SELECT MAX(idFormation) FROM Formation";
+//		     String selectSQL = "SELECT MAX(idFormation) FROM Formation";
 		     Statement selectStmt = this.cnx.createStatement();
-		     ResultSet rs = selectStmt.executeQuery(selectSQL);
-		     int lastId = 0;
-		     if (rs.next()) {
-		       lastId = rs.getInt(1);
-		     }
+//		     ResultSet rs = selectStmt.executeQuery(selectSQL);
 		     insertStmt.setString(1, themeFormation);
-		     insertStmt.setInt(2, idFormation);
+		     insertStmt.setInt(2, idFormateur);
 //		     System.out.println(themeFormation+" " +idFormation);
 		     insertStmt.executeUpdate();
 		     insertStmt.close();
@@ -259,10 +279,12 @@ public class Model {
 	public void InsertFormationApprenant(int idFormation, int idApprenant) {   
 		 try {
              this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
-    		 Statement insertStmt = this.cnx.createStatement();
-    		 String insertSQL = "INSERT INTO FormationApprenant VALUES ('"+idFormation+"', '"+idApprenant+"')";
-    		 insertStmt.execute(insertSQL);
-    		 
+    		 String insertSQL = "INSERT INTO FormationApprenant VALUES (?, ?)";
+    		 PreparedStatement insertStmt = this.cnx.prepareStatement(insertSQL);
+    		 Statement selectStmt = this.cnx.createStatement();
+		     insertStmt.setInt(1, idFormation);
+		     insertStmt.setInt(2, idApprenant);
+    		 insertStmt.executeUpdate();	 
     		 insertStmt.close();
     	 } catch (SQLException e) {
     		 e.printStackTrace();

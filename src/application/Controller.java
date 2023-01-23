@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 
-
 public class Controller implements Initializable{
 	
 	@FXML
@@ -48,10 +47,16 @@ public class Controller implements Initializable{
 	        Scene scene = this.paneAccueil.getScene();    
 	        scene.setRoot(rootFXML);       
 	}
+	public void onClickFenetreEnvoiFormulaire() throws IOException {
+        Parent rootFXML = FXMLLoader.load(getClass().getResource("EnvoiFormulaire.fxml"));
+        Scene scene = this.paneAccueil.getScene();    
+        scene.setRoot(rootFXML);       
+}
+	
 	public void onClickFenetreTest() throws IOException {
         Parent rootFXML = FXMLLoader.load(getClass().getResource("Formulaire.fxml"));
         Scene scene = this.paneAccueil.getScene();    
         scene.setRoot(rootFXML);       
-}
+	}
 	
 }

@@ -78,25 +78,26 @@ public class AjoutFormationController implements Initializable {
         				editCheck.setOnAction(event -> {	
         					//Il faux tester si la valeur est vrai ou pas ************************************************************************?
         					//Si vrai on enregistre **********************************************************************************************
-        					Apprenant apprenant = tbData.getItems().get(getIndex());
-//        					System.out.println(apprenant);
-//        					System.out.println(idSaisieFormateur.getSelectionModel().getSelectedItem());
-        					final String SEPARATEUR = " ";
-    				        String Chaine = idSaisieFormateur.getSelectionModel().getSelectedItem();
-    				        String mots[] = Chaine.split(SEPARATEUR);
-    				        int idFormateur = 0;
-    				        for (int i = 0; i < mots.length; i++) {
-//    				            System.out.println(mots[0]+"*********"+ mots[1]);
-    				            idFormateur = model.SelectIdFormateur(mots[0], mots[1]);
-    				        }
-							//INSERT Formation Apprenant
-    				        int idApprenant = apprenant.getIdApprenant();
-        					model.InsertFormationApprenant(idApprenant, idFormateur);
-//        					System.out.println(idFormateur+idApprenant+"INSERT DONE");
-        					
+        					if (editCheck.isSelected()) {
+	        					Apprenant apprenant = tbData.getItems().get(getIndex());
+//	        					System.out.println(apprenant);
+	        					System.out.println(apprenant.getNomApprenant());
+//	        					System.out.println(apprenant.getIdApprenant());
+	        					final String SEPARATEUR = " ";
+	    				        String Chaine = idSaisieFormateur.getSelectionModel().getSelectedItem();
+	    				        String mots[] = Chaine.split(SEPARATEUR);
+	    				        int idFormateur = 0;
+	    				        for (int i = 0; i < mots.length; i++) {
+	    				            idFormateur = model.SelectIdFormateur(mots[0], mots[1]);
+	    				        }
+								//INSERT Formation Apprenant
+//	    				        int idApprenant = apprenant.getIdApprenant();
+	    				        int idApprenant = model.SelectIdApprenant(apprenant.getNomApprenant());
+//	    				        System.out.println("L'id apprenant est : "+apprenant.getIdApprenant());
+	        					model.InsertFormationApprenant(idApprenant, idFormateur);
+//	        					System.out.println(idApprenant+"*************"+idFormateur+"*************"+"INSERT DONE");
+        					}
         					//Sinon on Delete*****************************************************************************************************?
-
-        					
             			});
             			setGraphic(editCheck);
             			setText(null);
@@ -126,10 +127,11 @@ public class AjoutFormationController implements Initializable {
         }
 		//INSERT Formation
 		model.InsertFormation(Thème.getText(), idFormateur);
+		System.out.println(Thème.getText()+"****************************"+ idFormateur);
 	}
 	public void onClickButtonReturn() throws IOException {
         Parent rootFXML = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
         Scene scene = this.AjoutFormation.getScene();    
         scene.setRoot(rootFXML);       
-}
+    }
 }

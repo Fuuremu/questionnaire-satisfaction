@@ -2,32 +2,23 @@ package application;
 
 import javax.mail.Message;
 import javax.mail.*;
-import javax.mail.internet.*;
-import java.util.*;
 
 
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 public class SendMail {
     public static void main(String[] args) {
         // Adresse email de l'expéditeur
-        String from = "emelinemsanchez@gmail.com";
+        String from = "arbouchilham1@gmail.com";
         // Mot de passe de l'expéditeur
-        String password = "@6D1/wOd8v42";
+        String password = "Ilhamattiarbouch1234?";
         // Adresse email du destinataire
-        String to = "arbouch1@gmail.com";
+        String to = "arbouchilham1@gmail.com";
         // Sujet du message
         String subject = "LE SUJET";
         // Corps du message

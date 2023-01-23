@@ -32,7 +32,11 @@ public class AjoutFormateurController {
 		String nomFormateur = Nom.getText();
 		String prenomFormateur = Prénom.getText();
 		//INSERT
-		model.InsertFormateur(nomFormateur, prenomFormateur);
+		if (nomFormateur != "" && prenomFormateur != "") {
+			model.InsertFormateur(nomFormateur, prenomFormateur);
+			Nom.setText("");
+			Prénom.setText("");
+		}
 	}
 	
 	public void onClickButtonReturn() throws IOException {

@@ -18,7 +18,7 @@ public class Apprenant {
    }  
 
 	public int getIdApprenant() {
-		return idApprenant;
+		return this.idApprenant;
 	}
 
 	public void setIdApprenant(int idApprenant) {
