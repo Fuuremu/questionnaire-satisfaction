@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import org.controlsfx.control.Rating;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,63 +21,72 @@ import javafx.scene.control.TextField;
 import service.Model;
 
 public class FormulaireController implements Initializable  {
-
-//	@FXML
-//    private Rating rat;
 	
 	@FXML
-	private TextField Note1;
+	public Rating Note1;
 	
 	@FXML
-	private TextField Note2;
+	public Rating Note2;
 	
 	@FXML
-	private TextField Note3;
+	public Rating Note3;
 	
 	@FXML
-	private TextField Note4;
+	public Rating Note4;
 	
 	@FXML
-    private ChoiceBox<String> idSaisieApprentie;
+	public ChoiceBox<String> idSaisieApprentie;
 	
 	@FXML
-    private ChoiceBox<String> idChoixFormation;
+	public ChoiceBox<String> idChoixFormation;
 	
 	@FXML
-	private Button Valider;
+	public Button Valider;
+	
+	public int N1 = 0; 
+	public int N2 = 0; 
+	public int N3 = 0; 
+	public int N4 = 0; 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	    initCombo();
+	    Note1.ratingProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> ov, Number old, Number newT1) {
+				// TODO Auto-generated method stub
+				N1 = newT1.intValue();
+//				System.out.println(N1);
+			}
+		});
+	    Note2.ratingProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> ov, Number old, Number newT2) {
+				// TODO Auto-generated method stub
+				N2 = newT2.intValue();
+//				System.out.println(N2);
+			}
+		});
+	    Note3.ratingProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> ov, Number old, Number newT3) {
+				// TODO Auto-generated method stub
+				N3 = newT3.intValue();
+//				System.out.println(N3);
+			}
+		});
+	    Note4.ratingProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> ov, Number old, Number newT4) {
+				// TODO Auto-generated method stub
+				N4 = newT4.intValue();
+//				System.out.println(N4);
+			}
+		});
 	};
 	
 	public void ClicOnButtonValiderNotation () {
 		Model model = new Model();
-		int N1 = 0; 
-		int N2 = 0; 
-		int N3 = 0; 
-		int N4 = 0; 
-//		Verifier si toutes les valeurs sont remplies
-		if (Note1.equals("") == true) {
-			throw new NumberFormatException("Veuillez Ne laisser aucun champ vide, "+Note1+"est vide");
-		} else {
-			N1 = Integer.parseInt(Note1.getText());
-		}
-		if (Note2.equals("") == true) {
-			throw new NumberFormatException("Veuillez Ne laisser aucun champ vide, "+Note2+"est vide");
-		} else {
-			N2 = Integer.parseInt(Note2.getText());
-		}
-		if (Note3.equals("") == true) {
-			throw new NumberFormatException("Veuillez Ne laisser aucun champ vide, "+Note3+"est vide");
-		} else {
-			N3 = Integer.parseInt(Note3.getText());
-		}
-		if (Note4.equals("") == true) {
-			throw new NumberFormatException("Veuillez Ne laisser aucun champ vide, "+Note4+"est vide");
-		} else {
-			N4 = Integer.parseInt(Note4.getText());
-		}
 		String Chaine = idSaisieApprentie.getSelectionModel().getSelectedItem();
         String mots[] = Chaine.split(" ");
 		int idApprentie = 0;
@@ -85,7 +96,7 @@ public class FormulaireController implements Initializable  {
         int idFormation = model.SelectIdFormation(idChoixFormation.getSelectionModel().getSelectedItem());
 		//INSERT
 		model.InsertNote(idApprentie, idFormation, N1, N2, N3, N4);
-//		System.out.println(idApprentie+"--"+ idFormation+"--"+ N1+"--"+ N2+"--"+ N3+"--"+ N4);
+		System.out.println(idApprentie+"--"+ idFormation+"--"+ N1+"--"+ N2+"--"+ N3+"--"+ N4);
 	}
 //	Note (idNote idApprenant idFormation note1 note2 note3 note4)
 	public void initCombo() {
