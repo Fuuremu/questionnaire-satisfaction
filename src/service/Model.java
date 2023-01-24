@@ -94,7 +94,7 @@ public class Model {
 	        }
 	     return listeNomsApprentie; 
 	}
-	//Pour récupérer l'id à partir du nom et prénom du formateur
+	//Pour récupérer l'id à partir du nom et prénom de l'apprenant
 	public int SelectIdApprenant (String Nom) {
 		int id = 0;
         try {    
@@ -112,6 +112,25 @@ public class Model {
         System.out.println(id);
 		return id;
 	}
+	//Pour récupérer le nom de l'apprenant à partir de l'id
+	public String SelectNomApprenantById (int Id) {
+		String name = "";
+        try {    
+            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+            System.out.println("Connection à la base de données");
+            Statement selectStmt = this.cnx.createStatement();
+            String selectSQL = "SELECT nomApprenant FROM Apprenant WHERE = idApprenant'"+Id+"'";
+            ResultSet rs = selectStmt.executeQuery(selectSQL);
+            while (rs.next()) {
+            	name = rs.getString("nomApprenant");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(name);
+		return name;
+	}
+	
 	public void InsertApprenant(String Nom, String Prénom, String AdresseMail) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);

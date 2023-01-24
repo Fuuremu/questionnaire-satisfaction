@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="466.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="466.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExportCsv">
    <children>
       <Pane prefHeight="466.0" prefWidth="606.0">
          <children>
             <TableView fx:id="tbData" layoutX="5.0" layoutY="24.0" prefHeight="205.0" prefWidth="595.0">
                <columns>
                   <TableColumn fx:id="IdApprenantColId" prefWidth="75.19997787475586" text="IdApprentie" />
-                  <TableColumn fx:id="NomApprentieColId" prefWidth="97.60003662109375" text="NomApprentie" />
-                  <TableColumn fx:id="ThemeFormationColId" prefWidth="108.80000305175781" text="ThemeFormation" />
-                  <TableColumn fx:id="IdFormationColId" prefWidth="92.00006103515625" text="IdFormation" />
-                  <TableColumn fx:id="Note1ColId" prefWidth="60.79998779296875" text="Note1" />
-                  <TableColumn fx:id="Note2ColId" prefWidth="52.0" text="Note2" />
-                  <TableColumn fx:id="Note3ColId" prefWidth="48.0" text="Note3" />
-                  <TableColumn fx:id="Note4ColId" prefWidth="48.0" text="Note4" />
+                  <TableColumn fx:id="NomApprentieColId" prefWidth="109.60003662109375" text="NameApprentie" />
+                  <TableColumn fx:id="IdFormationColId" prefWidth="87.19996643066406" text="IdFormation" />
+                  <TableColumn fx:id="ThemeFormationColId" prefWidth="111.20001220703125" text="ThemeFormation" />
+                  <TableColumn fx:id="Note1ColId" prefWidth="50.39996337890625" text="Note1" />
+                  <TableColumn fx:id="Note2ColId" minWidth="7.20001220703125" prefWidth="49.60003662109375" text="Note2" />
+                  <TableColumn fx:id="Note3ColId" prefWidth="45.5999755859375" text="Note3" />
+                  <TableColumn fx:id="Note4ColId" prefWidth="51.199951171875" text="Note4" />
                </columns>
             </TableView>
          </children>

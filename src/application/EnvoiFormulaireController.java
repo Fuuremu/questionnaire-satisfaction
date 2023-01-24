@@ -2,18 +2,19 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,6 +98,11 @@ public class EnvoiFormulaireController implements Initializable {
             // Définition du corps du message
             message.setText(body);
 
+//            MimeMultipart multipart = new MimeMultipart();      
+//            BodyPart messageBodyPart = new MimeBodyPart();
+//            messageBodyPart.setContent(bean.getBody()+"<br>","text/html");
+//            multipart.addBodyPart(messageBodyPart);
+            
             // Envoi du message
             Transport.send(message);
             System.out.println("Email envoyé avec succès");
