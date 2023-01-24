@@ -5,19 +5,35 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="371.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjoutAprenantController">
+<AnchorPane prefHeight="517.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjoutAprenantController">
    <children>
-      <Pane fx:id="AjoutApprenant" layoutY="7.0" prefHeight="382.0" prefWidth="431.0">
+      <Pane fx:id="AjoutApprenant" prefHeight="525.0" prefWidth="634.0">
          <children>
-            <TextField fx:id="Nom" layoutX="200.0" layoutY="66.0" prefHeight="31.0" prefWidth="196.0" />
-            <Label layoutX="36.0" layoutY="68.0" prefHeight="31.0" prefWidth="119.0" text="Nom de l'apprenant :" />
-            <TextField fx:id="sPrenom" layoutX="200.0" layoutY="137.0" prefHeight="31.0" prefWidth="196.0" />
-            <Label layoutX="36.0" layoutY="135.0" prefHeight="31.0" prefWidth="135.0" text="Prénom de l'apprenant :" />
-            <Label layoutX="36.0" layoutY="205.0" prefHeight="31.0" prefWidth="135.0" text="Adresse Mail :" />
-            <TextField fx:id="AdresseMail" layoutX="200.0" layoutY="205.0" prefHeight="31.0" prefWidth="196.0" />
-            <Button fx:id="AjouterApprenant" layoutX="144.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonAjoutApprenant" text="Ajouter un aprenant" />
-            <Button layoutX="35.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" text="Revenir" />
+            <TextField fx:id="Nom" layoutX="329.0" layoutY="76.0" prefHeight="31.0" prefWidth="196.0" />
+            <Label layoutX="109.0" layoutY="76.0" prefHeight="31.0" prefWidth="185.0" text="Nom de l'apprenant :" textFill="#1bb5d4">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
+            <TextField fx:id="sPrenom" layoutX="329.0" layoutY="166.0" prefHeight="31.0" prefWidth="196.0" />
+            <Label layoutX="109.0" layoutY="166.0" prefHeight="31.0" prefWidth="185.0" text="Prénom de l'apprenant :" textFill="#1bb5d4">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
+            <Label layoutX="109.0" layoutY="263.0" prefHeight="31.0" prefWidth="135.0" text="Adresse Mail :" textFill="#1bb5d4">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
+            <TextField fx:id="AdresseMail" layoutX="329.0" layoutY="263.0" prefHeight="31.0" prefWidth="196.0" />
+            <Button fx:id="AjouterApprenant" layoutX="240.0" layoutY="392.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonAjoutApprenant" style="-fx-border-color: #1bb5d4;" text="Ajouter un aprenant">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="40.0" layoutY="392.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" style="-fx-border-color: #1bb5d4;" text="Revenir">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>
