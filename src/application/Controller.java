@@ -1,7 +1,6 @@
 package application;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import entite.Formateur;

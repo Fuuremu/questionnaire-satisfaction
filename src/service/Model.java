@@ -112,22 +112,21 @@ public class Model {
         System.out.println(id);
 		return id;
 	}
-	//Pour récupérer le nom de l'apprenant à partir de l'id
-	public String SelectNomApprenantById (int Id) {
+//	Pour récupérer le nom de l'apprenant à partir de l'id-----------------------------------------------Validé
+	public String SelectNomApprenantById(int Id) {
 		String name = "";
         try {    
             this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
             System.out.println("Connection à la base de données");
             Statement selectStmt = this.cnx.createStatement();
-            String selectSQL = "SELECT nomApprenant FROM Apprenant WHERE = idApprenant'"+Id+"'";
-            ResultSet rs = selectStmt.executeQuery(selectSQL);
+            ResultSet rs = selectStmt.executeQuery("SELECT nomApprenant FROM Apprenant WHERE idApprenant= "+Id);
             while (rs.next()) {
             	name = rs.getString("nomApprenant");
             }
+//            System.out.println(Id+".............................."+name+"...................................");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(name);
 		return name;
 	}
 	
@@ -311,7 +310,23 @@ public class Model {
 	        System.out.println(id);
 			return id;
 		}
-		
+//		Pour récupérer le thème de la formation à partir de l'id----------------------------------------------Validé
+		public String SelectThemeFormationById(int Id) {
+			String theme = "";
+	        try {    
+	            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+	            System.out.println("Connection à la base de données");
+	            Statement selectStmt = this.cnx.createStatement();
+	            ResultSet rs = selectStmt.executeQuery("SELECT themeFormation FROM Formation WHERE idFormation= "+Id);
+	            while (rs.next()) {
+	            	theme = rs.getString("themeFormation");
+	            }
+//	            System.out.println(Id+".............................."+theme+"...................................");
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+			return theme;
+		}
 	public void InsertFormation(String themeFormation, int idFormateur) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
