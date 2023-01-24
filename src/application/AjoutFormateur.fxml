@@ -5,17 +5,30 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="289.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjoutFormateurController">
+<AnchorPane prefHeight="517.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjoutFormateurController">
    <children>
-      <Pane fx:id="AjoutFormateur" layoutY="7.0" prefHeight="276.0" prefWidth="431.0">
+      <Pane fx:id="AjoutFormateur" layoutY="7.0" prefHeight="509.0" prefWidth="633.0">
          <children>
-            <TextField fx:id="Nom" layoutX="200.0" layoutY="66.0" prefHeight="31.0" prefWidth="196.0" />
-            <Label layoutX="36.0" layoutY="68.0" prefHeight="31.0" prefWidth="119.0" text="Nom du formateur :" />
-            <TextField fx:id="Prénom" layoutX="200.0" layoutY="137.0" prefHeight="31.0" prefWidth="196.0" />
-            <Label layoutX="36.0" layoutY="135.0" prefHeight="31.0" prefWidth="135.0" text="Prénom du formateur :" />
-            <Button fx:id="AjouterFormateur" layoutX="144.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonAjoutFormateur" text="Ajouter formateur" />
-            <Button layoutX="29.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" text="Revenir" />
+            <TextField fx:id="Nom" layoutX="318.0" layoutY="129.0" prefHeight="31.0" prefWidth="196.0" />
+            <Label layoutX="119.0" layoutY="131.0" prefHeight="31.0" prefWidth="154.0" text="Nom du formateur :" textFill="#5fa139">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
+            <TextField fx:id="Prénom" layoutX="318.0" layoutY="222.0" prefHeight="31.0" prefWidth="196.0" />
+            <Label layoutX="119.0" layoutY="222.0" prefHeight="31.0" prefWidth="178.0" text="Prénom du formateur :" textFill="#5fa139">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
+            <Button fx:id="AjouterFormateur" layoutX="261.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#ClicOnButtonAjoutFormateur" style="-fx-border-color: #5fa139;" text="Ajouter formateur">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button layoutX="36.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" style="-fx-border-color: #5fa139;" text="Revenir">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>
