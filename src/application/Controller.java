@@ -18,7 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
 
-public class Controller implements Initializable{
+public class Controller implements Initializable {
 	
 	@FXML
 	private Pane paneAccueil;
