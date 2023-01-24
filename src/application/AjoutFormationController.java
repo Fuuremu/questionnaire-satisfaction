@@ -107,7 +107,8 @@ public class AjoutFormationController implements Initializable {
         	return cell;
         };
         colEdit.setCellFactory(cellFactory);
-        //*----------------------------------------------------------------------------------------------------------------------------------------------------
+        Thème.setText("");
+//        initCombo();
     }
 	public void initCombo() {
 		Model model = new Model();

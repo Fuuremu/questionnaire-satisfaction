@@ -13,6 +13,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import entite.Note;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.cell.PropertyValueFactory;
 import service.Model;
 
 public class EnvoiFormulaireController implements Initializable {
@@ -49,7 +51,17 @@ public class EnvoiFormulaireController implements Initializable {
         scene.setRoot(rootFXML);       
 	}
 	public void onClickButtonSendMail() throws IOException {
-		 send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", "arbouchilham1@gmail.com", "LE SUJET", "Test");
+		Model model = new Model();
+		int idFormation = model.SelectIdFormation(idChoixFormation.getSelectionModel().getSelectedItem());
+		//recuperer la liste de tout les mails des apprentie de la formation
+		ObservableList<String> listMails = FXCollections.observableArrayList(model.SelectMailsApprentieOfFormation(idFormation));
+	    //Je parcour la liste des mails et j'envoie un mail à chaque apprentie de la formation
+	    for (int i = 0; i < listMails.size() ; i++) {
+	    	System.out.println(listMails.get(i));
+	    	send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", listMails.get(i), "LE SUJET", "Test");
+	    };
+		
+//		 send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", "arbouchilham1@gmail.com", "LE SUJET", "Test");
 //		  // Adresse email de l'expéditeur
 //	        String from = "arbouchilham1@gmail.com";
 //	        // Mot de passe de l'expéditeur
@@ -64,7 +76,12 @@ public class EnvoiFormulaireController implements Initializable {
 //	        send(from, password, to, subject, body);
 	}
 
-    public static void send(String from, String password, String to, String subject, String body) {
+    private int SelectIdFormation() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static void send(String from, String password, String to, String subject, String body) {
         // Récupération des propriétés de l'environnement
         Properties props = new Properties();
         // Définition de l'hôte SMTP

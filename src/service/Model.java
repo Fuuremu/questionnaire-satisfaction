@@ -94,6 +94,24 @@ public class Model {
 	        }
 	     return listeNomsApprentie; 
 	}
+	//Select infos apprenant d'une formation*********************/////// ??????????????????????????????????????????
+	public ObservableList<String> SelectMailsApprentieOfFormation(int idFormation) {
+		ObservableList<String> listeMailsApprentie = FXCollections.observableArrayList();
+		 try {    
+	            this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);
+	            System.out.println("Connection à la base de données");
+	            Statement selectStmt = this.cnx.createStatement();
+	            String selectSQL = "SELECT * FROM Apprenant, FormationApprenant WHERE Apprenant.idApprenant = FormationApprenant.idApprenant AND idFormation="+idFormation;
+	            ResultSet rs = selectStmt.executeQuery(selectSQL);
+	            while (rs.next()) {
+	                String gmail = rs.getString("emailApprenant");
+	                listeMailsApprentie.add(gmail);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	     return listeMailsApprentie; 
+	}
 	//Pour récupérer l'id à partir du nom et prénom de l'apprenant
 	public int SelectIdApprenant (String Nom) {
 		int id = 0;
@@ -327,6 +345,7 @@ public class Model {
 	        }
 			return theme;
 		}
+		
 	public void InsertFormation(String themeFormation, int idFormateur) {   
 		try {
 			 this.cnx = DriverManager.getConnection(URL, LOGIN, PWD);

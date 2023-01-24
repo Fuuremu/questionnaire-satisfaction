@@ -1,6 +1,7 @@
 package application;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,13 +9,14 @@ import entite.Note;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import service.Model;
 
 public class ExportCsv implements Initializable  {
@@ -112,4 +114,9 @@ public class ExportCsv implements Initializable  {
 		   e.printStackTrace();
 	   }
    }
+   public void onClickButtonReturn() throws IOException {
+       Parent rootFXML = FXMLLoader.load(getClass().getResource("Accueil.fxml"));
+       Scene scene = this.Exporter.getScene();    
+       scene.setRoot(rootFXML);       
+}
    }

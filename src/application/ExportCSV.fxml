@@ -5,12 +5,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="466.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExportCsv">
+<AnchorPane prefHeight="517.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ExportCsv">
    <children>
-      <Pane prefHeight="466.0" prefWidth="606.0">
+      <Pane prefHeight="517.0" prefWidth="633.0" style="-fx-background-color: black;">
          <children>
-            <TableView fx:id="tbData" layoutX="5.0" layoutY="24.0" prefHeight="205.0" prefWidth="595.0">
+            <TableView fx:id="tbData" layoutX="24.0" layoutY="94.0" prefHeight="205.0" prefWidth="585.0">
                <columns>
                   <TableColumn fx:id="IdApprenantColId" prefWidth="75.19997787475586" text="IdApprentie" />
                   <TableColumn fx:id="NomApprentieColId" prefWidth="109.60003662109375" text="NameApprentie" />
@@ -22,7 +23,15 @@
                   <TableColumn fx:id="Note4ColId" prefWidth="51.199951171875" text="Note4" />
                </columns>
             </TableView>
-            <Button fx:id="Exporter" layoutX="264.0" layoutY="274.0" mnemonicParsing="false" onAction="#ClicOnButtonExporter" text="Exporter" />
+            <Button fx:id="Exporter" layoutX="264.0" layoutY="359.0" mnemonicParsing="false" onAction="#ClicOnButtonExporter" text="Exporter">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="24.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" prefHeight="34.0" prefWidth="92.0" style="-fx-border-color: white;" text="Revenir">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
