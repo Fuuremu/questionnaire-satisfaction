@@ -13,7 +13,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import entite.Note;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,7 +22,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.cell.PropertyValueFactory;
 import service.Model;
 
 public class EnvoiFormulaireController implements Initializable {
@@ -58,7 +56,7 @@ public class EnvoiFormulaireController implements Initializable {
 	    //Je parcour la liste des mails et j'envoie un mail à chaque apprentie de la formation
 	    for (int i = 0; i < listMails.size() ; i++) {
 	    	System.out.println(listMails.get(i));
-	    	send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", listMails.get(i), "LE SUJET", "Test");
+	    	send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", listMails.get(i), "Résultat de la fonctionnalité EnvoiMail", "Well Done, good job !");
 	    };
 		
 //		 send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", "arbouchilham1@gmail.com", "LE SUJET", "Test");
@@ -74,11 +72,6 @@ public class EnvoiFormulaireController implements Initializable {
 //	        String body = "LE CORPS";
 //
 //	        send(from, password, to, subject, body);
-	}
-
-    private int SelectIdFormation() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	public static void send(String from, String password, String to, String subject, String body) {

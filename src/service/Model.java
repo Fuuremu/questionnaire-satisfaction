@@ -292,6 +292,7 @@ public class Model {
         }
         return listeFormations;
     }
+	//Recupérer juste la liste de tous les libellés de formation
 	public ObservableList<String> SelectNamesFormation() {
 		ObservableList<String> listeNomsFormations = FXCollections.observableArrayList();
 		 try {    

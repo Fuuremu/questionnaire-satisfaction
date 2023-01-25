@@ -91,19 +91,19 @@ public class ExportCsv implements Initializable  {
 		   ObservableList<Note> listNote = FXCollections.observableArrayList(model.selectNote());
 		   for (int i = 0; i < listNote.size(); i++) {
 			   String sLigne = String.valueOf(listNote.get(i).getIdApprenant());
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += model.SelectNomApprenantById(listNote.get(i).getIdApprenant());
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += listNote.get(i).getIdFormation();
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += model.SelectThemeFormationById(listNote.get(i).getIdFormation());
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += listNote.get(i).getNote1();
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += listNote.get(i).getNote2();
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += listNote.get(i).getNote3();
-			   sLigne += " ";
+			   sLigne += "---";
 			   sLigne += listNote.get(i).getNote4();
 			   sLigne += SEPARATOR;
 			   file.append(sLigne);
