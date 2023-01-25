@@ -11,7 +11,7 @@
    <children>
       <Pane prefHeight="517.0" prefWidth="633.0" style="-fx-background-color: grey;">
          <children>
-            <Button layoutX="70.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" style="-fx-border-color: yellow;" text="Revenir">
+            <Button layoutX="41.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#onClickButtonReturn" style="-fx-border-color: yellow;" text="Revenir">
                <font>
                   <Font size="15.0" />
                </font></Button>
@@ -24,6 +24,11 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
+            <Button fx:id="ImportSend" layoutX="482.0" layoutY="307.0" mnemonicParsing="false" onAction="#ClicOnButtonImporter" onMouseClicked="#onClickButtonSendMail" style="-fx-border-color: yellow;" text="Import &amp; Send">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children></Pane>
    </children>
 </AnchorPane>

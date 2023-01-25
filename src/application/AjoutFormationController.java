@@ -78,10 +78,10 @@ public class AjoutFormationController implements Initializable {
         				editCheck.setOnAction(event -> {	
         					//Il faux tester si la valeur est vrai ou pas ************************************************************************?
         					//Si vrai on enregistre **********************************************************************************************
-        					if (editCheck.isSelected()) {
+//        					if (editCheck.isSelected()) {
 	        					Apprenant apprenant = tbData.getItems().get(getIndex());
-//	        					System.out.println(apprenant);
-	        					System.out.println(apprenant.getNomApprenant());
+//	        					System.out.println(apprenant+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//	        					System.out.println(apprenant.getNomApprenant());
 //	        					System.out.println(apprenant.getIdApprenant());
 	        					final String SEPARATEUR = " ";
 	    				        String Chaine = idSaisieFormateur.getSelectionModel().getSelectedItem();
@@ -96,7 +96,7 @@ public class AjoutFormationController implements Initializable {
 //	    				        System.out.println("L'id apprenant est : "+apprenant.getIdApprenant());
 	        					model.InsertFormationApprenant(idApprenant, idFormateur);
 //	        					System.out.println(idApprenant+"*************"+idFormateur+"*************"+"INSERT DONE");
-        					}
+//        					}
         					//Sinon on Delete*****************************************************************************************************?
             			});
             			setGraphic(editCheck);

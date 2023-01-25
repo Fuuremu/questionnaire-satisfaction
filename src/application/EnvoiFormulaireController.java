@@ -1,7 +1,14 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -12,6 +19,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JFileChooser;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,7 +64,7 @@ public class EnvoiFormulaireController implements Initializable {
 	    //Je parcour la liste des mails et j'envoie un mail à chaque apprentie de la formation
 	    for (int i = 0; i < listMails.size() ; i++) {
 	    	System.out.println(listMails.get(i));
-	    	send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", listMails.get(i), "Résultat de la fonctionnalité EnvoiMail", "Well Done, good job !");
+	    	send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", listMails.get(i), "Résultat de la fonctionnalité EnvoiMail", "Yeay Send mails is working !");
 	    };
 		
 //		 send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", "arbouchilham1@gmail.com", "LE SUJET", "Test");
@@ -117,4 +125,25 @@ public class EnvoiFormulaireController implements Initializable {
             e.printStackTrace();
         }
     }
+	   public void ClicOnButtonImporter() {
+		   try {
+		   JFileChooser dialogue = new JFileChooser(new File("."));
+		   PrintWriter sortie;
+		   File fichier;
+		   if(dialogue.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			   fichier = dialogue.getSelectedFile();
+			   sortie = new PrintWriter(new FileWriter(fichier.getPath(), true));
+			   System.out.println(fichier);
+			   List<String> result = new ArrayList<String>();
+			   FileReader fr = new FileReader(fichier);
+		       BufferedReader br = new BufferedReader(fr);
+		       for (String line = br.readLine(); line != null; line = br.readLine()) {
+		            result.add(line);
+		            System.out.println(line);
+		            send("ciemg.ngis@gmail.com", "abslmhqlhdlxdamr", line, "Résultat de la fonctionnalité EnvoiMail", "Importation des adresses mail fonctionne !");
+		       }
+		   }
+	   } catch (Exception e){
+		   e.printStackTrace();
+	   }}
 }
